@@ -1,0 +1,33 @@
+---
+interface Props {
+    logo: string;
+}
+
+const { logo } = Astro.props;
+---
+
+<section class="hero">
+    <img
+        src={logo}
+        alt="Baja Tacos Logo"
+        class="hero__profile"
+        width="180"
+        height="180"
+    />
+</section>
+
+<style>
+    .hero {
+        display: flex;
+        background: linear-gradient(rgb(var(--bg-color)), rgb(var(--theme-light)));
+        justify-content: center;
+        padding-block: 1.5rem;
+    }
+    .hero__profile {
+        aspect-ratio: 1;
+        max-width: 100%;
+        border-radius: 50%;
+        border: solid 4px white;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+</style>
