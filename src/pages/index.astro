@@ -1,32 +1,93 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../layouts/Hero.astro";
+
+const companyMenu = {
+    title: "Baja Tacos Menu.",
+    description: "Hello world!",
+    logo: "/profile.jpg",
+    menu: {
+        cat: [
+            {
+                name: "Entries",
+                slug: "entries",
+                isFeatured: false,
+                picture: "/tacos_bg.jpg",
+                items: [
+                    {
+                        name: "Menu item 1",
+                        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.",
+                        price: 16.0,
+                        picture: "/quesadilla.jpg",
+                    },
+                    {
+                        name: "Menu item 2",
+                        description: "Sit amet consectetur adipisicing elit. Unde aliquam doloribus.",
+                        price: 20.0,
+                    },
+                ],
+            },
+            {
+                name: "Drinks",
+                slug: "drinks",
+                isFeatured: false,
+                picture: "/drinks_bg.jpg",
+                items: [
+                    {
+                        name: "Menu item 1",
+                        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.",
+                        price: 16.0,
+                    },
+                    {
+                        name: "Menu item 2",
+                        description: "Sit amet consectetur adipisicing elit. Unde aliquam doloribus.",
+                        price: 20.0,
+                    },
+                ],
+            },
+            {
+                name: "Specials",
+                slug: "specials",
+                isFeatured: true,
+                items: [
+                    {
+                        name: "Menu item 1",
+                        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.",
+                        price: 16.0,
+                    },
+                    {
+                        name: "Menu item 2",
+                        description: "Sit amet consectetur adipisicing elit. Unde aliquam doloribus.",
+                        price: 20.0,
+                    },
+                ],
+            },
+        ],
+    },
+};
+console.log(companyMenu);
 ---
 
 <Layout
-    title="Baja Tacos Menu."
-    description="Hello world!"
+    title={companyMenu.title}
+    description={companyMenu.description}
 >
     <main>
-        <Hero logo="/profile.jpg" />
+        <Hero logo={companyMenu.logo} />
         <nav class="filter">
             <ul class="nav-filter">
-                <li class="nav-filter__item">
-                    <a
-                        href="#entries"
-                        class="active"
-                        >Entries</a
-                    >
-                </li>
-                <li class="nav-filter__item"><a href="#drinks">Drinks</a></li>
-                <li class="nav-filter__item"><a href="#special">Special</a></li>
-                <li class="nav-filter__item">
-                    <a
-                        href="#promos"
-                        class="featured"
-                        >Promos</a
-                    >
-                </li>
+                {
+                    companyMenu.menu.cat.map((category, i) => (
+                        <li class="nav-filter__item">
+                            <a
+                                href={`#${category.slug}`}
+                                class:list={[{ featured: category.isFeatured }, { active: i == 0 }]}
+                            >
+                                {category.name}
+                            </a>
+                        </li>
+                    ))
+                }
             </ul>
         </nav>
         <section class="menu">
