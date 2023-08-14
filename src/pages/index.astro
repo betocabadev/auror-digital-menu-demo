@@ -11,19 +11,30 @@ const companyMenu = {
             {
                 name: "Entries",
                 slug: "entries",
+                description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel ut laudantium inventore quisquam molestiae explicabo iure ea, animi distinctio magnam?",
                 isFeatured: false,
                 picture: "/tacos_bg.jpg",
                 items: [
                     {
                         name: "Menu item 1",
                         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.",
+                        price: 10.0,
+                    },
+                    {
+                        name: "Menu item 2",
+                        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.",
                         price: 16.0,
                         picture: "/quesadilla.jpg",
                     },
                     {
-                        name: "Menu item 2",
+                        name: "Menu item 3",
+                        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.",
+                        price: 12.0,
+                    },
+                    {
+                        name: "Menu item 4",
                         description: "Sit amet consectetur adipisicing elit. Unde aliquam doloribus.",
-                        price: 20.0,
+                        price: 14.0,
                     },
                 ],
             },
@@ -65,7 +76,6 @@ const companyMenu = {
         ],
     },
 };
-console.log(companyMenu);
 ---
 
 <Layout
@@ -91,97 +101,49 @@ console.log(companyMenu);
             </ul>
         </nav>
         <section class="menu">
-            <div
-                class="menu-cat"
-                id="entries"
-            >
-                <h2>Entries</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel ut laudantium inventore quisquam molestiae explicabo iure ea, animi distinctio magnam?</p>
-                <picture>
-                    <image
-                        src="/tacos_bg.jpg"
-                        alt="Entries Background"
-                        class="menu-cat__image"
-                    />
-                </picture>
-                <ul
-                    role="list"
-                    class="cat-item-list"
-                >
-                    <li class="cat-item">
-                        <div class="cat-item__info">
-                            <h4 class="cat-item__title">Menu item 1 <span class="cat-item__price">$ 16.00</span></h4>
-                            <span class="cat-item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.</span>
-                        </div>
-                    </li>
-                    <li class="cat-item">
-                        <div class="cat-item__info">
-                            <h4 class="cat-item__title">Menu item 1 <span class="cat-item__price">$ 16.00</span></h4>
-                            <span class="cat-item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.</span>
-                        </div>
-                        <img
-                            src="/quesadilla.jpg"
-                            alt="Quesadilla"
-                            class="cat-item__image"
-                        />
-                    </li>
-                    <li class="cat-item">
-                        <div class="cat-item__info">
-                            <h4 class="cat-item__title">Menu item 1 <span class="cat-item__price">$ 16.00</span></h4>
-                            <span class="cat-item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.</span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            {
+                companyMenu.menu.cat.map((category) => (
+                    <div
+                        class="menu-cat"
+                        id={category.slug}
+                    >
+                        <h2>{category.name}</h2>
+                        {category.description && <p>{category.description}</p>}
+                        {category.picture && (
+                            <picture>
+                                <image
+                                    src={category.picture}
+                                    alt={`${category.name} Background`}
+                                    class="menu-cat__image"
+                                />
+                            </picture>
+                        )}
 
-            <div
-                class="menu-cat"
-                id="drinks"
-            >
-                <h2>Drinks</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel ut laudantium inventore quisquam molestiae explicabo iure ea, animi distinctio magnam?</p>
-                <picture>
-                    <image
-                        src="/drinks_bg.jpg"
-                        alt="Drinks Background"
-                        class="menu-cat__image"
-                    />
-                </picture>
-                <ul
-                    role="list"
-                    class="cat-item-list"
-                >
-                    <li class="cat-item">
-                        <div class="cat-item__info">
-                            <h4 class="cat-item__title">Menu item 1 <span class="cat-item__price">$ 16.00</span></h4>
-                            <span class="cat-item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.</span>
-                        </div>
-                    </li>
-                    <li class="cat-item">
-                        <div class="cat-item__info">
-                            <h4 class="cat-item__title">Menu item 1 <span class="cat-item__price">$ 16.00</span></h4>
-                            <span class="cat-item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.</span>
-                        </div>
-                    </li>
-                    <li class="cat-item">
-                        <div class="cat-item__info">
-                            <h4 class="cat-item__title">Menu item 1 <span class="cat-item__price">$ 16.00</span></h4>
-                            <span class="cat-item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.</span>
-                        </div>
-                    </li>
-                    <li class="cat-item">
-                        <div class="cat-item__info">
-                            <h4 class="cat-item__title">Menu item 1 <span class="cat-item__price">$ 16.00</span></h4>
-                            <span class="cat-item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.</span>
-                        </div>
-                        <img
-                            src="/margaritas.jpg"
-                            alt="Margaritas"
-                            class="cat-item__image"
-                        />
-                    </li>
-                </ul>
-            </div>
+                        <ul
+                            role="list"
+                            class="cat-item-list"
+                        >
+                            {category.items.map((item) => (
+                                <li class="cat-item">
+                                    <div class="cat-item__info">
+                                        <h4 class="cat-item__title">
+                                            {item.name} <span class="cat-item__price">$ {item.price}</span>
+                                        </h4>
+                                        {item.description && <span class="cat-item__description">{item.description}</span>}
+                                    </div>
+                                    {item.picture && (
+                                        <image
+                                            src={item.picture}
+                                            alt={`${item.name} Image`}
+                                            class="cat-item__image"
+                                        />
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))
+            }
         </section>
         <p class="copy">By Auror Studio Inc</p>
     </main>
