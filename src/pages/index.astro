@@ -3,73 +3,143 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../layouts/Hero.astro";
 
 const companyMenu = {
-    title: "Baja Tacos Menu.",
+    title: "Baja Tacos & Grill Menu.",
     description: "Hello world!",
     logo: "/profile.jpg",
     menu: {
         cat: [
             {
-                name: "Entries",
-                slug: "entries",
-                description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel ut laudantium inventore quisquam molestiae explicabo iure ea, animi distinctio magnam?",
+                name: "Asadero",
+                slug: "asadero",
+                description: "Deleitate con los platillos que tenemos para servir desde nuestro asadero. Carne asada, pastor o pollo, tú eliges.",
                 isFeatured: false,
                 picture: "/tacos_bg.jpg",
                 items: [
                     {
-                        name: "Menu item 1",
-                        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.",
-                        price: 10.0,
+                        name: "Tacos",
+                        price: 3.79,
                     },
                     {
-                        name: "Menu item 2",
-                        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.",
-                        price: 16.0,
+                        name: "Papa Asada c/carne",
+                        price: 8.99,
+                    },
+                    {
+                        name: "Quesadilla c/carne",
+                        price: 4.75,
                         picture: "/quesadilla.jpg",
                     },
                     {
-                        name: "Menu item 3",
-                        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.",
-                        price: 12.0,
+                        name: "Vampiro",
+                        price: 4.75,
                     },
                     {
-                        name: "Menu item 4",
-                        description: "Sit amet consectetur adipisicing elit. Unde aliquam doloribus.",
-                        price: 14.0,
+                        name: "Torta c/papas",
+                        price: 11.99,
                     },
                 ],
             },
             {
-                name: "Drinks",
-                slug: "drinks",
+                name: "Birria",
+                slug: "birria",
+                isFeatured: false,
+                items: [
+                    {
+                        name: "3 St Tacos",
+                        price: 9.99,
+                    },
+                    {
+                        name: "Quesabirria",
+                        price: 4.75,
+                    },
+                    {
+                        name: "Orden",
+                        price: 14.99,
+                    },
+                    {
+                        name: "½ Orden",
+                        price: 12.99,
+                    },
+                ],
+            },
+            {
+                name: "Samplers",
+                slug: "samplers",
+                isFeatured: false,
+                items: [
+                    {
+                        name: "6 St Tacos",
+                        price: 16.95,
+                    },
+                    {
+                        name: "12 St Tacos",
+                        price: 29.95,
+                    },
+                ],
+            },
+            {
+                name: "Bebidas",
+                slug: "bebidas",
                 isFeatured: false,
                 picture: "/drinks_bg.jpg",
                 items: [
                     {
-                        name: "Menu item 1",
-                        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.",
-                        price: 16.0,
+                        name: "Aguas Frescas",
+                        price: 3.95,
                     },
                     {
-                        name: "Menu item 2",
-                        description: "Sit amet consectetur adipisicing elit. Unde aliquam doloribus.",
-                        price: 20.0,
+                        name: "Soda Botella",
+                        price: 3.75,
+                    },
+                    {
+                        name: "Soda Fuente",
+                        price: 3.75,
+                    },
+                    {
+                        name: "Mimosa",
+                        price: 8.5,
+                    },
+                    {
+                        name: "Sangria",
+                        price: 8.5,
+                    },
+                    {
+                        name: "Cerveza Domestica",
+                        price: 5.5,
+                    },
+                    {
+                        name: "Cerveza Importada",
+                        price: 6.5,
+                    },
+                    {
+                        name: "Chabela",
+                        price: 7.95,
+                    },
+                    {
+                        name: "Vaso Michelado/Cubano",
+                        price: 1.5,
                     },
                 ],
             },
             {
-                name: "Specials",
-                slug: "specials",
+                name: "Appetizers",
+                slug: "appetizers",
                 isFeatured: true,
                 items: [
                     {
-                        name: "Menu item 1",
-                        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima unde aliquam doloribus.",
-                        price: 16.0,
+                        name: "Queso Fundido",
+                        price: 13.99,
                     },
                     {
-                        name: "Menu item 2",
-                        description: "Sit amet consectetur adipisicing elit. Unde aliquam doloribus.",
-                        price: 20.0,
+                        name: "Nachos c/carne",
+                        price: 13.5,
+                    },
+                    {
+                        name: "Carne asada fries",
+                        price: 13.5,
+                    },
+                    {
+                        name: "Guacamole",
+                        price: 9.99,
                     },
                 ],
             },
@@ -78,10 +148,7 @@ const companyMenu = {
 };
 ---
 
-<Layout
-    title={companyMenu.title}
-    description={companyMenu.description}
->
+<Layout title={companyMenu.title} description={companyMenu.description}>
     <main>
         <Hero logo={companyMenu.logo} />
         <nav class="filter">
@@ -89,10 +156,7 @@ const companyMenu = {
                 {
                     companyMenu.menu.cat.map((category, i) => (
                         <li class="nav-filter__item">
-                            <a
-                                href={`#${category.slug}`}
-                                class:list={[{ featured: category.isFeatured }, { active: i == 0 }]}
-                            >
+                            <a href={`#${category.slug}`} class:list={[{ featured: category.isFeatured }, { active: i == 0 }]}>
                                 {category.name}
                             </a>
                         </li>
@@ -103,26 +167,16 @@ const companyMenu = {
         <section class="menu">
             {
                 companyMenu.menu.cat.map((category) => (
-                    <div
-                        class="menu-cat"
-                        id={category.slug}
-                    >
+                    <div class="menu-cat" id={category.slug}>
                         <h2>{category.name}</h2>
                         {category.description && <p>{category.description}</p>}
                         {category.picture && (
                             <picture>
-                                <image
-                                    src={category.picture}
-                                    alt={`${category.name} Background`}
-                                    class="menu-cat__image"
-                                />
+                                <image src={category.picture} alt={`${category.name} Background`} class="menu-cat__image" />
                             </picture>
                         )}
 
-                        <ul
-                            role="list"
-                            class="cat-item-list"
-                        >
+                        <ul role="list" class="cat-item-list">
                             {category.items.map((item) => (
                                 <li class="cat-item">
                                     <div class="cat-item__info">
@@ -131,13 +185,7 @@ const companyMenu = {
                                         </h4>
                                         {item.description && <span class="cat-item__description">{item.description}</span>}
                                     </div>
-                                    {item.picture && (
-                                        <image
-                                            src={item.picture}
-                                            alt={`${item.name} Image`}
-                                            class="cat-item__image"
-                                        />
-                                    )}
+                                    {item.picture && <image src={item.picture} alt={`${item.name} Image`} class="cat-item__image" />}
                                 </li>
                             ))}
                         </ul>
