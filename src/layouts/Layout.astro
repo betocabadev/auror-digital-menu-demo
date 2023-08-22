@@ -11,36 +11,13 @@ const { title, description } = Astro.props;
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta
-            name="description"
-            content={description}
-        />
-        <meta
-            name="viewport"
-            content="width=device-width"
-        />
-        <link
-            rel="icon"
-            type="image/svg+xml"
-            href="/favicon.svg"
-        />
-        <link
-            rel="preconnect"
-            href="https://fonts.googleapis.com"
-        />
-        <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossorigin
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-            rel="stylesheet"
-        />
-        <meta
-            name="generator"
-            content={Astro.generator}
-        />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+        <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
     </head>
     <body>
@@ -58,6 +35,8 @@ const { title, description } = Astro.props;
     html {
         font-family: "Montserrat", system-ui, sans-serif;
         background: rgb(var(--bg-color));
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
     }
     body {
         padding: 0;
